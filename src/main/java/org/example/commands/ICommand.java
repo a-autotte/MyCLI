@@ -1,6 +1,4 @@
-package org.example;
-
-
+package org.example.commands;
 
 public interface ICommand {
     String GetCommandName();
