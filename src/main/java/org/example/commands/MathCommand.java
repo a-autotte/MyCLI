@@ -1,5 +1,6 @@
 package org.example.commands;
 
+import java.awt.image.AffineTransformOp;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,41 +30,82 @@ public class MathCommand implements ICommand {
                 switch(args[0])
                 {
                     case "bin":
-                        ConvertDecimalToBin(args[1]);
+                        ConvertDecimalIntoBase(args[1], 2);
                         break;
+
+                    case "hex":
+                        ConvertDecimalIntoBase(args[1], 16);
+                        break;
+                    case "ter":
+                        ConvertDecimalIntoBase(args[1], 3);
+                        break;
+                    case "oct":
+                        ConvertDecimalIntoBase(args[1], 8);
+                        break;
+                    case "duo":
+                        ConvertDecimalIntoBase(args[1], 12);
+                        break;
+
                 }
 
             }
     }
 
-    private void ConvertDecimalToBin(String numberToConvert)
+    private void ConvertDecimalIntoBase(String numberToConvert1, int base)
     {
-        int number = Integer.parseInt(numberToConvert);
+        int number = Integer.parseInt(numberToConvert1);
         int moduloNumber;
-        ArrayList<String> binNumber = new ArrayList<String> ();
-        binNumber.add("" + number % 2);
+        ArrayList<String> baseNumber = new ArrayList<String> ();
+        baseNumber.add("" + number % base);
 
 
-        while (number / 2 != 0)
+        while (number / base != 0)
         {
-            number = number / 2;
-            moduloNumber = number % 2;
-            binNumber.add(Integer.toString(moduloNumber));
-
-
+            number = number / base;
+            moduloNumber = number % base;
+            baseNumber.add(Integer.toString(moduloNumber));
         }
 
-        String trueBinaryNumber = "";
+        String trueBaseNumber = "";
 
-        for (int index = binNumber.size() - 1; index >= 0; index--)
+        for (int index = baseNumber.size() - 1; index >= 0; index--)
         {
-            trueBinaryNumber += binNumber.get(index);
+            trueBaseNumber += baseNumber.get(index);
         }
 
 
-        System.out.println(trueBinaryNumber);
+        System.out.println(trueBaseNumber);
+    }
 
+    private char NumberIntoHexChar(int number)
+    {
+        char numberIntoHexCode;
+        switch(number)
+        {
 
+            case 10:
+                numberIntoHexCode = 'A';
+                break;
+            case 11:
+                numberIntoHexCode = 'B';
+                break;
+            case 12:
+                numberIntoHexCode = 'C';
+                break;
+            case 13:
+                numberIntoHexCode = 'D';
+                break;
+            case 14:
+                numberIntoHexCode = 'E';
+                break;
+            case 15:
+                numberIntoHexCode = 'F';
+                break;
+            default:
+                numberIntoHexCode = (char)number;
+        }
+
+        return numberIntoHexCode;
 
 
     }

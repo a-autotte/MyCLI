@@ -20,6 +20,8 @@ public class CliService {
     {
         commands.put("rep", new RepeatCommand());
         commands.put("math", new MathCommand());
+        commands.put("ls", new ListCommand());
+        commands.put("cd", new ChangeDirectoryCommand());
     }
 
     private void ExecuteCommand(String command, String[] args)
