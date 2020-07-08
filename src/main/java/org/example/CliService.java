@@ -22,6 +22,9 @@ public class CliService {
         commands.put("math", new MathCommand());
         commands.put("ls", new ListCommand());
         commands.put("cd", new ChangeDirectoryCommand());
+        commands.put("net", new NetworkCommand());
+        commands.put("al", new AlgorithmCryptingCommand());
+        commands.put("clear", new ClearCommand());
     }
 
     private void ExecuteCommand(String command, String[] args)
