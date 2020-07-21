@@ -17,9 +17,10 @@ public class ClearCommand implements ICommand {
     @Override
     public void Execute(String[] args) {
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 100; i > 0; i--)
         {
             System.out.println("");
+            System.out.flush();
         }
     }
 }

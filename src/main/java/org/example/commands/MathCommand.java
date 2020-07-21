@@ -29,19 +29,26 @@ public class MathCommand implements ICommand {
             {
                 switch(args[0])
                 {
+                    case "exp":
+                        CalculateExponentOfNumber(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+                        break;
+                    case "prime":
+                        CheckIfNumberIsPrime(Integer.parseInt(args[1]));
+                        break;
                     case "bin":
                         ConvertDecimalIntoBase(args[1], 2);
                         break;
 
-                    case "hex":
-                        ConvertDecimalIntoBase(args[1], 16);
-                        break;
                     case "ter":
                         ConvertDecimalIntoBase(args[1], 3);
                         break;
                     case "oct":
                         ConvertDecimalIntoBase(args[1], 8);
                         break;
+                    case "hex":
+                        ConvertDecimalIntoBase(args[1], 16);
+                        break;
+
                     case "duo":
                         ConvertDecimalIntoBase(args[1], 12);
                         break;
@@ -51,7 +58,7 @@ public class MathCommand implements ICommand {
             }
     }
 
-    private void ConvertDecimalIntoBase(String numberToConvert1, int base)
+    private static void ConvertDecimalIntoBase(String numberToConvert1, int base)
     {
         int number = Integer.parseInt(numberToConvert1);
         int moduloNumber;
@@ -77,7 +84,7 @@ public class MathCommand implements ICommand {
         System.out.println(trueBaseNumber);
     }
 
-    private char NumberIntoHexChar(int number)
+    private static char NumberIntoHexChar(int number)
     {
         char numberIntoHexCode;
         switch(number)
@@ -106,7 +113,40 @@ public class MathCommand implements ICommand {
         }
 
         return numberIntoHexCode;
+    }
 
+    private static void CalculateExponentOfNumber(int base, int exponent)
+    {
+        int cptTimes = 1;
+        int result = base;
+
+        while (cptTimes < exponent)
+        {
+            result *= base;
+            cptTimes++;
+        }
+
+        System.out.println(result);
+    }
+
+    private static void CheckIfNumberIsPrime(int number)
+    {
+        if (number % 2 == 0 && number != 2)
+        {
+            System.out.println("The number is not a prime number");
+        }
+
+        else
+        {
+            for (int dividableNumber = 1; dividableNumber < number; dividableNumber++)
+            {
+                int result = number / dividableNumber;
+                System.out.println(result);
+            }
+
+        }
 
     }
+
+
 }
