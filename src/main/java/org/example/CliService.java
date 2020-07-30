@@ -25,6 +25,7 @@ public class CliService {
         commands.put("net", new NetworkCommand());
         commands.put("al", new AlgorithmCryptingCommand());
         commands.put("clear", new ClearCommand());
+        commands.put("algo", new AlgorithmCommand());
     }
 
     private void ExecuteCommand(String command, String[] args)
